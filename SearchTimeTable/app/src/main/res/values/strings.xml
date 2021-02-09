@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SearchTimeTable</string>
+    <string name="lon_label">緯度: %f</string>
+    <string name="lat_label">経度: %f</string>
+    <string name="default_val">--</string>
+    <string name="retry">リトライ</string>
+    <string name="permission_rationale">権限の許可が必要です</string>
+    <string name="no_location_detected">測位できませんでした</string>
+    <string name="permission_denied_explanation">アプリを使うには権限の許可が必要です</string>
+    <string name="settings">設定</string>
+</resources>
