@@ -4,6 +4,7 @@ import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var latitudeText: TextView
     private lateinit var longitudeText: TextView
+    private var lat: Double = 0.0
+    private var lon: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +59,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setLocationText(location: Location?) {
+        latitudeText.text = resources
+                .getString(R.string.lat_label, location?.latitude)
+        longitudeText.text = resources
+                .getString(R.string.lon_label, location?.longitude)
+    }
+
+    private fun isValidLocation() : Boolean {
+        return (this.lat != 0.0) && (this.lon != 0.0)
+    }
+
     @SuppressLint("MissingPermission")
     private fun getLastLocation() {
         fusedLocationClient.lastLocation
@@ -63,11 +77,10 @@ class MainActivity : AppCompatActivity() {
                 if (taskLocation.isSuccessful && taskLocation.result != null) {
 
                     val location = taskLocation.result
+                    setLocationText(location)
+                    this.lat = location?.latitude ?: 0.0
+                    this.lon = location?.longitude ?: 0.0
 
-                    latitudeText.text = resources
-                        .getString(R.string.lat_label, location?.latitude)
-                    longitudeText.text = resources
-                        .getString(R.string.lon_label, location?.longitude)
                 } else {
                     Log.w(TAG, "getLastLocation:exception", taskLocation.exception)
                     showSnackbar(R.string.no_location_detected)
