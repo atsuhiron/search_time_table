@@ -8,4 +8,5 @@
     <string name="no_location_detected">測位できませんでした</string>
     <string name="permission_denied_explanation">アプリを使うには権限の許可が必要です</string>
     <string name="settings">設定</string>
+    <string name="send">送信</string>
 </resources>

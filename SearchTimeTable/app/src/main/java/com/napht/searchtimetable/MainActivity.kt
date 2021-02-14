@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var latitudeText: TextView
     private lateinit var longitudeText: TextView
+    private lateinit var btnSend: Button
     private var lat: Double = 0.0
     private var lon: Double = 0.0
 
@@ -40,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         latitudeText = findViewById(R.id.latitude_text)
         longitudeText = findViewById(R.id.longitude_text)
+        btnSend = findViewById(R.id.btn_search)
+        btnSend.setOnClickListener {
+
+        }
 
         latitudeText.text = resources
             .getString(R.string.lat_label, 0.0f)
